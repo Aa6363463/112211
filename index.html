@@ -2,10 +2,32 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>我的网页</title>
+  <title>WebRTC 呼叫</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jssip/3.3.3/jssip.min.js"></script>
 </head>
 <body>
-  <h1>你好，这是我的第一个 Cloudflare Pages 网站！</h1>
-  <p>来自 GitHub 的网页内容</p>
+  <h1>WebRTC 呼叫按钮</h1>
+  <button id="callButton">点击发起呼叫</button>
+
+  <script>
+    const socket = new JsSIP.WebSocketInterface('wss://121.199.45.239:5061'); // Asterisk WebSocket 地址
+    const configuration = {
+      sockets  : [ socket ],
+      uri      : 'sip:9001@121.199.45.239',  // 你的 Asterisk 地址
+      password : '密码',  // 设置为你的 SIP 账号密码
+    };
+
+    const ua = new JsSIP.UA(configuration);
+
+    ua.start();
+
+    document.getElementById('callButton').addEventListener('click', function() {
+      const target = 'sip:9001@121.199.45.239';  // 目标号码（9001 分机）
+      
+      const session = ua.call(target, {
+        mediaConstraints: { audio: true, video: false }
+      });
+    });
+  </script>
 </body>
 </html>
