@@ -1,72 +1,60 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <title>在线电话客服</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客服中心</title>
   <style>
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      background: url('https://images.unsplash.com/photo-1581092580493-320f0ca4c82f?fit=crop&w=1920&q=80') no-repeat center center;
-      background-size: cover;
-      height: 100vh;
-      font-family: sans-serif;
+      height: 100%;
+    }
+
+    .background-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      background-image: url('https://cdn.pixabay.com/photo/2016/03/31/19/14/headphones-1295138_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .text-overlay {
       color: white;
-      text-shadow: 1px 1px 5px black;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
-    h1 {
-      font-size: 32px;
-      margin-bottom: 40px;
+
+    @media (max-width: 768px) {
+      .text-overlay {
+        font-size: 1.5rem;
+        padding: 15px 30px;
+      }
     }
-    .buttons {
-      display: flex;
-      gap: 20px;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      background-color: rgba(0, 123, 255, 0.8);
-      color: white;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: rgba(0, 123, 255, 1);
+
+    @media (max-width: 480px) {
+      .text-overlay {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
-
-  <h1>点击右下角联系在线电话客服</h1>
-  <div class="buttons">
-    <button onclick="callTarget('target1')">目的地 1</button>
-    <button onclick="callTarget('target2')">目的地 2</button>
-    <button onclick="callTarget('target3')">目的地 3</button>
+  <div class="background-container">
+    <div class="text-overlay">点击右下角联系在线电话客服</div>
   </div>
 
-  <script>
-    const scripts = {
-      target1: "eyJjdCI6Iit0eGpWMDhRNDdINDBQTElaM1k0VXVcL0lKSCtRK3p4Y1hKbGc1ck9CSmJvaUd1NzNuXC9ZNVJ5OE1SSUJNQWJJNlNPa3BPQzBvUnNpWkpkdkFmbWVQMXFHbTNlVlVHNVJhSHJEVU1GNmRPXC9qXC9lcnp4VFpUQzdOK2JleVErS0pKblFxWml1NnV0ekdTVXI2bkJRM0JJV2dzeVVoU2lpWG53TFw vTW4zZFp6K0VNK2tFYlVVbWwyTklCaE1jcFwvc3M2YVwvS0tqandQNm1MUXlsb1RKWjRPSWZnRGtVNXJBZFhpYnJIRThLaVM5QzVkSE1sbWRWSjUzTHpWWUJJNUZ4aUpBNjFqeUVBejErdTNJMU44U09PZURlMTFhdW5uMVZzcVBWRVZZWWFLRW5HND0iLCJpdiI6IjYxNDAzMjkzMDNmOTYxNmE1YWUzMDRlN2M3MjU1YmM2IiwicyI6Ijc1YmFjNDQ0NWU5YmNhYjMifQ==",
-      target2: "eyJjdCI6IjY5Rm5DMGxublRLTW9zUTlLcEx3XC8yY2FxSldxVWt5cU5URXZDVnVCaEtiVjd0XC8wUHA0dTNtcFVEOWJqRG0xa2hGbkRiVW1xQVJTaGdcL1lHa3l2Y1lBUnZOdzFLbG56WXBWb2NKekN3ZjhvS0pNMm1DcDZyMXVXM1M0UnlnbVUwaFpVcGw5U1VqbTZkbU5XWDBkbFpYTVpqemdPM291QkJqY VV3R2MxMHdLYk45b1hKdlI4dFFcL1RXdTdGTk9oYW9wVzg4S3VYaTcyQTYxbjNaSGE3QmltYW12dWJ1bWlmU2lWckg5MzU3VmVETmJ4MXN2QXdmU3VlcXYyRnU1dFBVOUh5Qk5BV0JjeW5qelFJUW5TVG93cmQ5SlVxeGw2U1ZcL2FrY2dMYmxFdkU9IiwiaXYiOiJmMTQ2ZjVkMTg0Mzg0YWQ4MzRlMDg2ZmZhNGM3YWMzYSIsInMiOiJiYTQzMGI4ZWIxYzI1NjJlIn0=",
-      target3: "eyJjdCI6Im9jVmpJZUlub3FWam5EQmZkUmVXQXB6T0QrdGtSaFVNK3Jmb3dKQTl4OVlHQ283RjJRT3FHYVNvbz Z4ZzdEbEhycEhPTnQzaTZ5Vk5tbkFwM2JWalMzU2R2dFIwd3BQUEhXeGh1alJKRDlOYWM3K zBYNkZ5TE91aGMra2RwRGVGZlU5d2dFNjB6ZjhURTZBSUhVSEQyVmVQTmw1cDdDU05cL3Jnd HM0d1RyaXAxWGVnM05iNlgrdUZXTFd1T2hGMVVuUHBKdzk1XC9YMkZmbEZQXC9QSkUzYW1kVUtROVhpSDVcL2laUWtvM29aRVhZTzRkVG5SUXN1d1FcL0k5M2JSbkp6aDgwaURDem9mTlBWa3VHN1BYUjM5b2tcL1VmRmg5RlE1SnM3dDRZbEE1Y3FnPSIsIml2IjoiYzcwOWY3NmU1MWQ2MTU3ZDNmZTFmZTdiNmE2ZDQ0Y2UiLCJzIjoiZGNiYjYzMjJmNjJiNTUzYiJ9"
-    };
-
-    function callTarget(id) {
-      const old = document.getElementById('click2call_script');
-      if (old) old.remove();
-
-      const script = document.createElement('script');
-      script.id = 'click2call_script';
-      script.src = 'https://cloud.issabel.org/click2call/click.js?code=' + scripts[id];
-      document.body.appendChild(script);
-    }
-  </script>
-
+  <!-- 插入点击呼叫脚本 -->
+  <script src='https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IjdTNTNJa21abkJtbDk4eUp1eXFEWmlUQnRsT2FqRjdFODdkU2RDMXdCUVFub3BLMjFGMUZHNzNIMXk1MTUxZXI1eVhCcWIyaHVpc3AzWWFEdXVJeFQyK2RBejJLRWYxUFNxeHlcL1BSWTAyTFIxUnFqMENjYzBvRjlLRFIxY2txU081eGVwdUdjbWtXUjVEdmFXNDdJd3NWSU9KOUV0YzdORW56dFpmYTdreHcrdnhIeXpLSmNkbTl0SFIrRUVuc3V4T1h3cG1teU1venJVV3VIOU0zaFFTYU9DdWd4QzhmY0pLaXlrb3dKejNEaEFJaFBJazhValdPeWFjbUJjZGhPQlU3TzVPdnNFVU1uQlZ2UmhlKzNkUDhXXC9tamdOMGV1ZGhTeDRMeWRkdmM9IiwiaXYiOiJiMDI3ZDVhOWJmNGE1NjhlMGU3MDNiNGE1NDY5MzNkZSIsInMiOiJjMTIzODRmMGM1OGUxZmQ0In0='></script>
 </body>
 </html>
