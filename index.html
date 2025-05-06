@@ -1,33 +1,60 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>WebRTC 呼叫</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jssip/3.3.3/jssip.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>客服中心</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .background-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://yourserver.com/kefu.jpg'); /* 替换为你的客服图片地址 */
+      background-size: cover;
+      background-position: center;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+
+    .text-overlay {
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .text-overlay {
+        font-size: 1.5rem;
+        padding: 15px 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .text-overlay {
+        font-size: 1.2rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>WebRTC 呼叫按钮</h1>
-  <button id="callButton">点击发起呼叫</button>
+  <div class="background-container">
+    <div class="text-overlay">点击右下角联系在线电话客服</div>
+  </div>
 
-  <script>
-    const socket = new JsSIP.WebSocketInterface('wss://121.199.45.239:5061'); // Asterisk WebSocket 地址
-    const configuration = {
-      sockets  : [ socket ],
-      uri      : 'sip:9001@121.199.45.239',  // 你的 Asterisk 地址
-      password : '密码',  // 设置为你的 SIP 账号密码
-    };
-
-    const ua = new JsSIP.UA(configuration);
-
-    ua.start();
-
-    document.getElementById('callButton').addEventListener('click', function() {
-      const target = 'sip:9001@121.199.45.239';  // 目标号码（9001 分机）
-      
-      const session = ua.call(target, {
-        mediaConstraints: { audio: true, video: false }
-      });
-    });
-  </script>
+  <!-- 插入点击呼叫脚本 -->
+  <script src='https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IjdTNTNJa21abkJtbDk4eUp1eXFEWmlUQnRsT2FqRjdFODdkU2RDMXdCUVFub3BLMjFGMUZHNzNIMXk1MTUxZXI1eVhCcWIyaHVpc3AzWWFEdXVJeFQyK2RBejJLRWYxUFNxeHlcL1BSWTAyTFIxUnFqMENjYzBvRjlLRFIxY2txU081eGVwdUdjbWtXUjVEdmFXNDdJd3NWSU9KOUV0YzdORW56dFpmYTdreHcrdnhIeXpLSmNkbTl0SFIrRUVuc3V4T1h3cG1teU1venJVV3VIOU0zaFFTYU9DdWd4QzhmY0pLaXlrb3dKejNEaEFJaFBJazhValdPeWFjbUJjZGhPQlU3TzVPdnNFVU1uQlZ2UmhlKzNkUDhXXC9tamdOMGV1ZGhTeDRMeWRkdmM9IiwiaXYiOiJiMDI3ZDVhOWJmNGE1NjhlMGU3MDNiNGE1NDY5MzNkZSIsInMiOiJjMTIzODRmMGM1OGUxZmQ0In0='></script>
 </body>
 </html>
