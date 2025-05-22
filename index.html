@@ -2,40 +2,29 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>联系客服</title>
   <style>
     html, body {
-      margin: 0; 
-      padding: 0; 
+      margin: 0; padding: 0;
       height: 100%;
-      width: 100%;
       font-family: Arial, sans-serif;
-      overflow: hidden; /* 防止滚动条 */
+      display: flex;
+      justify-content: center; /* 横向居中 */
+      align-items: center;     /* 纵向居中 */
+      background-color: #000;  /* 背景颜色，防止图片没铺满时白边 */
     }
-
-    body {
-      /* 背景图片 */
-      background-image: url('https://github.com/Aa6363463/linnx/blob/main/photo_2025-05-22_23-08-41.jpg?raw=true');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-size: cover;
-      
-      position: relative;
-      z-index: 0;
-    }
-
-    /* 遮罩层，半透明黑色增强内容可读性 */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3);
-      z-index: -1;
+    img {
+      max-width: 100%;  /* 最大宽度不超过屏幕宽度 */
+      max-height: 100%; /* 最大高度不超过屏幕高度 */
+      object-fit: contain; /* 保持比例完整显示 */
+      display: block;
     }
   </style>
 </head>
 <body>
+  <img src="https://github.com/Aa6363463/linnx/blob/main/photo_2025-05-22_23-08-41.jpg?raw=true" alt="背景图片" />
+  
   <!-- Issabel Click2Call Widget -->
   <script src='https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IlhydFhyWnVBUlNXWENpaUZndGNRbmJEcXJGMkNkakpKV0lnd1FBVVRFaUlFaXhKMTN0NzQrM2pSU0IwS0xFQTBhaTdEdlhGWk5tVjI5U0pVOHZ2MjlLTjRmQ0lmbFNZMld4NVwvYlNEdzhqNzQ4OUNRZDl1cUhUeGEyQjdPckdpQ0lReTJnbkFzaFFURG1ubUpJSWVSb295bHQ1NHBJY0RJdFBQa2tzMGZ0bkJLVmNkMjhKZGxQRk92a21IRURjYnZvbVJXdEpQRVpcL1hIb0t4alJxdDl3THJGV3NubTNqMzcxdXlrMVdvS29HMUtLMUZBeFhYeENqUjF0REN2cEE0bkozdzRHN2o2aGxLZlwvcmlmU2hUdDdBOGEwd0JjdlFUWGNIa0xRakpyY0Y4PSIsIml2IjoiNTBjOWQ1MzE0ODc0NzkzOTQxYjJlNmRmYzY5YmU1NGEiLCJzIjoiMzM2ZmI2MWY4OTNmYzQ2ZiJ9'></script>
 </body>
