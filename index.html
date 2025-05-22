@@ -2,32 +2,35 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>联系客服</title>
   <style>
-    body, html {
-      margin: 0;
-      padding: 0;
+    html, body {
+      margin: 0; 
+      padding: 0; 
       height: 100%;
+      width: 100%;
       font-family: Arial, sans-serif;
+      overflow: hidden; /* 防止滚动条 */
+    }
 
+    body {
       /* 背景图片 */
       background-image: url('https://github.com/Aa6363463/linnx/blob/main/photo_2025-05-22_23-08-41.jpg?raw=true');
-      background-size: cover;       /* 铺满 */
-      background-position: center;  /* 居中 */
-      background-repeat: no-repeat; /* 不重复 */
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
       
-      /* 可选：给背景加一个深色遮罩，让内容更清晰 */
       position: relative;
       z-index: 0;
     }
 
-    /* 遮罩层 */
+    /* 遮罩层，半透明黑色增强内容可读性 */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.3); /* 半透明黑色遮罩 */
+      background: rgba(0,0,0,0.3);
       z-index: -1;
     }
   </style>
