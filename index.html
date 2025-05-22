@@ -10,21 +10,35 @@
       height: 100%;
       font-family: Arial, sans-serif;
       display: flex;
-      justify-content: center; /* 横向居中 */
-      align-items: center;     /* 纵向居中 */
-      background-color: #000;  /* 背景颜色，防止图片没铺满时白边 */
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
     }
     img {
-      max-width: 100%;  /* 最大宽度不超过屏幕宽度 */
-      max-height: 100%; /* 最大高度不超过屏幕高度 */
-      object-fit: contain; /* 保持比例完整显示 */
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
       display: block;
+    }
+    #call-text {
+      position: fixed;
+      bottom: 20px;       /* 往下 */
+      right: 120px;       /* 左移一点 */
+      font-size: 24px;
+      color: white;
+      user-select: none;
+      font-weight: 600;
+      font-family: "微软雅黑", Arial, sans-serif;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      cursor: default;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <img src="https://github.com/Aa6363463/linnx/blob/main/photo_2025-05-22_23-08-41.jpg?raw=true" alt="背景图片" />
-  
+  <div id="call-text">点击拨打</div>
+
   <!-- Issabel Click2Call Widget -->
   <script src='https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IlhydFhyWnVBUlNXWENpaUZndGNRbmJEcXJGMkNkakpKV0lnd1FBVVRFaUlFaXhKMTN0NzQrM2pSU0IwS0xFQTBhaTdEdlhGWk5tVjI5U0pVOHZ2MjlLTjRmQ0lmbFNZMld4NVwvYlNEdzhqNzQ4OUNRZDl1cUhUeGEyQjdPckdpQ0lReTJnbkFzaFFURG1ubUpJSWVSb295bHQ1NHBJY0RJdFBQa2tzMGZ0bkJLVmNkMjhKZGxQRk92a21IRURjYnZvbVJXdEpQRVpcL1hIb0t4alJxdDl3THJGV3NubTNqMzcxdXlrMVdvS29HMUtLMUZBeFhYeENqUjF0REN2cEE0bkozdzRHN2o2aGxLZlwvcmlmU2hUdDdBOGEwd0JjdlFUWGNIa0xRakpyY0Y4PSIsIml2IjoiNTBjOWQ1MzE0ODc0NzkzOTQxYjJlNmRmYzY5YmU1NGEiLCJzIjoiMzM2ZmI2MWY4OTNmYzQ2ZiJ9'></script>
 </body>
