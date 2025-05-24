@@ -1,103 +1,130 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>联系客服</title>
-  <style>
-    html, body {
-      margin: 0; padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #fff;
-    }
-
-    #call-text {
-      font-size: 24px;
-      color: black;
-      user-select: none;
-      font-weight: 600;
-      font-family: "微软雅黑", Arial, sans-serif;
-      cursor: pointer;
-      padding: 10px 20px;
-      border: 2px solid #000;
-      border-radius: 8px;
-      background-color: #f2f2f2;
-      transition: background-color 0.3s;
-    }
-
-    #call-text:hover {
-      background-color: #e0e0e0;
-    }
-
-    /* 弹窗样式 */
-    #popup {
-      display: none;
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #fff;
-      border: 2px solid #333;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 1001;
-      font-size: 18px;
-      color: #000;
-    }
-
-    #popup-close {
-      position: absolute;
-      top: 6px;
-      right: 12px;
-      cursor: pointer;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>联系客服</title>
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+  }
+  #call-text {
+    font-size: 24px;
+    color: black;
+    user-select: none;
+    font-weight: 600;
+    font-family: "微软雅黑", Arial, sans-serif;
+    cursor: pointer;
+    padding: 10px 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    transition: background-color 0.3s;
+  }
+  #call-text:hover {
+    background-color: #e0e0e0;
+  }
+  /* 弹窗样式 */
+  #popup {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 2px solid #333;
+    padding: 16px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 1001;
+    font-size: 18px;
+    color: #000;
+  }
+  #popup-close {
+    position: absolute;
+    top: 6px;
+    right: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
-  <div id="call-text">在线人工客服</div>
 
-  <div id="popup">
-    <span id="popup-close">&times;</span>
-    <!-- 弹窗文本动态插入 -->
-  </div>
+<div id="call-text">在线人工客服</div>
 
-  <!-- Issabel Click2Call Widget (异步加载优化) -->
-  <script defer src='https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IlhydFhyWnVBUlNXWENpaUZndGNRbmJEcXJGMkNkakpKV0lnd1FBVVRFaUlFaXhKMTN0NzQrM2pSU0IwS0xFQTBhaTdEdlhGWk5tVjI5U0pVOHZ2MjlLTjRmQ0lmbFNZMld4NVwvYlNEdzhqNzQ4OUNRZDl1cUhUeGEyQjdPckdpQ0lReTJnbkFzaFFURG1ubUpJSWVSb295bHQ1NHBJY0RJdFBQa2tzMGZ0bkJLVmNkMjhKZGxQRk92a21IRURjYnZvbVJXdEpQRVpcL1hIb0t4alJxdDl3THJGV3NubTNqMzcxdXlrMVdvS29HMUtLMUZBeFhYeENqUjF0REN2cEE0bkozdzRHN2o2aGxLZlwvcmlmU2hUdDdBOGEwd0JjdlFUWGNIa0xRakpyY0Y4PSIsIml2IjoiNTBjOWQ1MzE0ODc0NzkzOTQxYjJlNmRmYzY5YmU1NGEiLCJzIjoiMzM2ZmI2MWY4OTNmYzQ2ZiJ9'></script>
+<div id="popup">
+  <span id="popup-close">&times;</span>
+  <span id="popup-message">电话加载中，请稍后...</span>
+</div>
 
-  <script>
-    const callText = document.getElementById('call-text');
-    const popup = document.getElementById('popup');
-    const popupClose = document.getElementById('popup-close');
+<!-- Issabel Click2Call Widget 异步加载 -->
+<script defer src="https://cloud.issabel.org/click2call/click.js?code=eyJjdCI6IlhydFhyWnVBUlNXWENpaUZndGNRbmJEcXJGMkNkakpKV0lnd1FBVVRFaUlFaXhKMTN0NzQrM2pSU0IwS0xFQTBhaTdEdlhGWk5tVjI5U0pVOHZ2MjlLTjRmQ0lmbFNZMld4NVwvYlNEdzhqNzQ4OUNRZDl1cUhUeGEyQjdPckdpQ0lReTJnbkFzaFFURG1ubUpJSWVSb295bHQ1NHBJY0RJdFBQa2tzMGZ0bkJLVmNkMjhKZGxQRk92a21IRURjYnZvbVJXdEpQRVpcL1hIb0t4alJxdDl3THJGV3NubTNqMzcxdXlrMVdvS29HMUtLMUZBeFhYeENqUjF0REN2cEE0bkozdzRHN2o2aGxLZlwvcmlmU2hUdDdBOGEwd0JjdlFUWGNIa0xRakpyY0Y4PSIsIml2IjoiNTBjOWQ1MzE0ODc0NzkzOTQxYjJlNmRmYzY5YmU1NGEiLCJzIjoiMzM2ZmI2MWY4OTNmYzQ2ZiJ9"></script>
 
-    // 标记是否超过10秒
-    let ready = false;
+<script>
+  const callText = document.getElementById('call-text');
+  const popup = document.getElementById('popup');
+  const popupClose = document.getElementById('popup-close');
+  const popupMessage = document.getElementById('popup-message');
 
-    // 10秒后切换状态
-    setTimeout(() => {
-      ready = true;
-    }, 10000);
+  let widgetLoaded = false;
+  const maxWaitTime = 20000; // 20秒超时
+  const checkInterval = 500; // 轮询间隔500ms
+  let startTime = null;
+  let checkTimer = null;
 
-    callText.addEventListener('click', () => {
-      if (ready) {
-        popup.textContent = '请点击右下角电话按钮';
-      } else {
-        popup.textContent = '电话加载中，请稍后点击...';
-      }
-      // 加回关闭按钮
-      popup.appendChild(popupClose);
-      popup.style.display = 'block';
-    });
+  // 判断小部件是否加载
+  function isWidgetLoaded() {
+    // 小部件默认class/id或者结构可能变化，以下仅示例：
+    // 请根据实际页面右下角小电话按钮的特征修改这里的检测条件
+    return document.querySelector('.click2call-widget, #click2call, iframe[src*="click2call"]') !== null;
+  }
 
-    popupClose.addEventListener('click', () => {
-      popup.style.display = 'none';
-    });
-  </script>
+  // 轮询检测小部件是否加载
+  function checkWidgetLoop() {
+    if (isWidgetLoaded()) {
+      widgetLoaded = true;
+      popupMessage.textContent = '请点击右下角联系客服';
+      clearInterval(checkTimer);
+      return;
+    }
+
+    if (Date.now() - startTime > maxWaitTime) {
+      widgetLoaded = false;
+      popupMessage.textContent = '电话加载失败，请稍后刷新或重试';
+      clearInterval(checkTimer);
+      return;
+    }
+  }
+
+  callText.addEventListener('click', () => {
+    popup.style.display = 'block';
+    if (!startTime) {
+      startTime = Date.now();
+    }
+    if (widgetLoaded) {
+      popupMessage.textContent = '请点击右下角联系客服';
+    } else {
+      popupMessage.textContent = '电话加载中，请稍后...';
+    }
+
+    // 如果未开始轮询，启动轮询
+    if (!checkTimer) {
+      checkTimer = setInterval(checkWidgetLoop, checkInterval);
+    }
+  });
+
+  popupClose.addEventListener('click', () => {
+    popup.style.display = 'none';
+  });
+</script>
+
 </body>
 </html>
