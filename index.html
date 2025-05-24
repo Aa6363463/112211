@@ -65,7 +65,7 @@
 
   <div id="popup">
     <span id="popup-close">&times;</span>
-    右下角电话加载中.......
+    <!-- 弹窗文本动态插入 -->
   </div>
 
   <!-- Issabel Click2Call Widget (异步加载优化) -->
@@ -76,7 +76,22 @@
     const popup = document.getElementById('popup');
     const popupClose = document.getElementById('popup-close');
 
+    // 标记是否超过10秒
+    let ready = false;
+
+    // 10秒后切换状态
+    setTimeout(() => {
+      ready = true;
+    }, 10000);
+
     callText.addEventListener('click', () => {
+      if (ready) {
+        popup.textContent = '请点击右下角电话按钮';
+      } else {
+        popup.textContent = '电话加载中，请稍后点击...';
+      }
+      // 加回关闭按钮
+      popup.appendChild(popupClose);
       popup.style.display = 'block';
     });
 
@@ -84,7 +99,5 @@
       popup.style.display = 'none';
     });
   </script>
-</body>
-</html>
 </body>
 </html>
